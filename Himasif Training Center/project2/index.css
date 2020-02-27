@@ -1,0 +1,176 @@
+/*body {background-image: url("http://3.bp.blogspot.com/-StNEF_PsjYY/T-fbqM_7HAI/AAAAAAAAAX4/SvEk0EsfWRA/s1600/red+anime+background.jpg"); 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-attachment: fixed;
+/*;
+	margin:0;
+	padding:0;
+	color:#151515;
+	font-family:'Roboto',sans-serif;
+	font-size:14px;
+	font-weight:400;
+	text-align:left;
+	line-height:normal;*/
+
+body{
+	width: 90%
+	margin: 0;
+	background-color: #eaeaea;
+	background-image: url('bg.jpg');
+	background-size: center;
+	background-position: -70px 5px;
+	background-attachment: fixed;
+}
+.container{
+	width: 900px;
+	border: 5px dashed;
+	margin: auto;
+	background-color: white;
+	overflow: auto;
+}
+.navbar h1{
+	margin-left: 30px;
+	padding-bottom: -10px;
+}
+.navbar ul li{
+	margin-left: 10px;
+	display: inline-block;
+}
+.navbar a{
+	color: salmon;
+	text-decoration: none;
+}
+.navbar li a:hover{
+	color: red;
+	background-color: #eaeaea;
+	padding: 10px;
+}
+.gbr {;
+	height: 250px;
+	background-size: cover;
+	background-position: 0 -70px;
+	border-top: 5px solid skyblue;
+	background-image: url('computer.jpg');
+	margin-bottom: 5px;
+}
+.content {
+	width: 550px;
+	background-color: limegreen;
+	box-shadow: 5px solid black;
+	float: left;
+	overflow: auto;
+}
+.content h2{
+	font: italic bold 20px/18px arial,sans-serif;
+	margin-bottom: -10px;
+}
+.content .author{
+	color: #333;
+	font-size: 12px
+}
+.content .author a{
+	text-decoration: none;
+	color: salmon;
+}
+.sidebar{
+	float: right;
+	width: 340px;
+	height: 560px;
+	background-color: green;
+	overflow: auto;
+
+}
+.footer{
+	background-color: black;
+	height: 50px;
+	padding: 10px;
+	box-sizing: border-box;
+	clear: right;
+}
+.footer p{
+	color: blue;
+	font: small-caps bold 14px/10px arial,sans-serif;
+	text-align: center;
+}
+.newcon	{
+	width: 900px;
+	background-color: violet;
+	margin: auto;
+}
+/*.navbar{
+	padding: 10px;
+	background-color: white;
+	width: 100%;
+	position: fixed;
+	opacity: 0.5;
+}
+.navbar .judul{
+	font-family: laksaman;
+	color: #556b2f;
+	font-size: 30px;
+	margin: 0;
+	text-decoration: none;
+	float: left;
+	cursor: move;
+}
+.navbar .menu{
+	font-family: Lohit Telugu;
+	float: left;
+	margin-left: 10px;
+	text-decoration: none;
+	font-size: 25px;
+	margin-top: 0;
+	overflow: hidden;
+}
+
+.navbar .menu-login{
+	float: right;
+	margin-right: 50px;
+	font-size: 25px;
+	text-decoration: none;
+	border-radius: 10px;
+	margin-top: 6px;
+	padding: 5px 50px 5px 50px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.background .gbr{
+	
+}
+.background .text-nya{
+	position: absolute;
+	top: 20%;
+	left: 10%
+	color: white;
+	font-size: 25px;
+	width: 650px;
+	font-family: Mitra Mono;
+	border-radius: 5px;
+}
+.background .menu-one{
+	position: absolute;
+	top: 55%;
+	left: 12%
+	border: 1px solid white;
+	padding: 5px 50px 5px 50px;
+	font-family: Lohit Telugu
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+.background .menu-one:hover{
+	background-color: white;
+	color: black;
+}
+.background .menu-two{
+	position: absolute;
+	top: 55%;
+	left: 28%
+	border: 1px solid white;
+	padding: 5px 50px 5px 50px;
+	font-family: Lohit Telugu
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+*/

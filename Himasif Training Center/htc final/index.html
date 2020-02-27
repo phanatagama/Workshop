@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Halaman awal</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div class="modal" id="modal" onclick="tutupmodal()">
+		<div class="putihnya">
+			<a class="x" onclick="tutupmodal()">x</a>
+		</div>
+	</div>
+	<div class="navbar" style="display: block;">
+		<a href="" class="judul">logo</a>
+		<a href="" class="menu">menu</a>
+		<a href="" class="menu">fitur</a>
+		<a href="" class="menu">about</a>
+		<a class="menu-login" onclick="munculModal()">login</a>
+		
+		
+	</div>
+	<div class="background">
+		<img src="taneman.jpg" class="gbr">
+		<fieldset>
+			<legend>form</legend>
+			<label>Angka A</label>
+			<input type="number" id="a" onkeyup="hitung()">
+			<br>
+			<label>Angka B</label>
+			<input type="number" id="b" onkeyup="hitung()">
+			<br>
+			<label>Hasil</label>
+			<input type="number" id="hasil" class="hasil">
+			<input type="submit" value="masukkan ke tabel" >
+		</fieldset>
+		<p class="text-nya" id="text-nya">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt explicabo harum quidem ex quae ipsa facilis sint maxime ducimus voluptatem, dignissimos placeat quod doloremque nam quos a eum nihil.</p>
+		<a  class="menu-one" onclick="gantiWarna()">Lihat Barang</a>
+		<a href="" class="menu-two">Beli Barang</a>
+	</div>
+	<table border="1" width="80%" align="center">
+		<thead>
+			<th>Angka A</th>
+			<th>Angka B</th>
+			<th>Hasil</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- <fieldset>
+		<legend>Nama</legend>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ea odio nemo at porro iusto sequi doloribus voluptates tempore cumque pariatur, maiores deserunt soluta provident enim cupiditate officiis, obcaecati similique?</p>
+	</fieldset> -->
+	<div class="pembungkus">
+		<!-- <div class="kotak">
+		
+		</div>
+		<div class="kotak"></div>
+		<div class="kotak"></div> -->
+		<!-- <div class="kotak"></div> -->
+	</div>
+
+	<table border="1">
+		<thead>
+			<th>No</th>
+			<th>Nama</th>
+			<th>Alamat</th>
+			<th>Action</th>
+		</thead>
+		<tbody>
+				<tr>
+						<td>1</td>
+						<td>Iqbal</td>
+						<td>Jember</td>
+						<td><a href="">Edit </a> || <a href=""> Hapus</a></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Iqbal</td>
+						<td>Jember</td>
+						<td><a href="">Edit </a> || <a href=""> Hapus</a></td>
+					</tr><tr>
+							<td>3</td>
+							<td>Iqbal</td>
+							<td>Jember</td>
+							<td><a href="">Edit </a> || <a href=""> Hapus</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Iqbal</td>
+							<td>Jember</td>
+							<td><a href="">Edit </a> || <a href=""> Hapus</a></td>
+						</tr>
+		</tbody>
+	</table>
+	<div></div>
+	<button type="submit" onclick="gantiWarnaFunction()">GANTI WARNA</button>
+
+<script type="text/javascript">
+	function gantiWarna(){
+		// document.getElementById('text-nya').style.color = "red";
+		window.alert('Haii...') // muncul peringatan ketika diklik
+	}
+	function munculModal(){
+		window.getElementById('modal').style.display = "block";
+
+	}
+	function tutupmodal(){
+		window.getElementById('modal').style.display = "none";
+	}	
+	function hitung(){
+		var x;
+		x = (document.getElementById("a").value * document.getElementById("b").value);
+		document.getElementById("hasil").value = x;
+	}
+</script>
+</body>
+</html>
