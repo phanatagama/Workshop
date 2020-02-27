@@ -1,0 +1,83 @@
+MIMO (Multiple In Multiple Out
+Jika ada 1 interface atau lebih
+wlan1 bisa ada 2 anthena sampai 4, fungsinya menerima dan mengirim sinyal.
+bisa menambah kecepatan jika bnyk anthena(baru ada di 802.11n,Nstreme)
+
+Nstreme meningkatkan kecepatan, bisa mengatur paket
+bestfeat = 1x polling menentukan pemecahan paket optimal
+
+=====Nstreme=====
+1. klik wlan 1 > wireless protocol =Nstreme > tab Nstreme > Enable
+2. wlan1 > scan > connect jaringan teman
+3. Ubah IP Jaringan di Network Sharing Center, sesuaikan dengan teman
+	IP Address = 192.168.xy(samakan).2(punya teman 1)
+	Subnet 	   = 255.255.255.0
+	Default Gateway= 192.168.xy(samakan).253(punya teman 254)
+	Prefered DNS = 192.168.xy(samakan).253(punya teman 254)
+4. Sistem > Address > ubah semua dan samakan
+	Address = 10.1.2.xy(samakan)/24		Inteface=wlan1
+	Address = 192.168.xy(samakan).253(punya teman 254)/24		Interface=bridge1
+5. tools> bandwith test > test to : 192.168.xyteman.254
+
+=============NV2=================
+1. klik wlan1 > wireles protocol > NV2
+2. disable Nstreme
+3. tab NV2 > centang security 
+
+===========firewall filter=============
+blok semua koneksi ke router
+1. IP > Firewall > tab Filter rule >new(+)
+2. chain: input > tab action > action: drop
+masih bisa internetan karena pc foward internet.
+//jika hanya block 1 IP 
+1. isi Src Adrress dengan IP wlan2 pc yang ingin diblok
+//jika ingin melihat siapapun yang konek router
+1. IP > Firewall > tab Filter rule >new(+)
+2. chain: input > action : log
+3. buka log
+
+-----------------------------------------------------------------------------------------------------
+
+##Route(Network)
+Route adalah koneksi antar network(jaringan) satu dengan network lain
+koneksi antar jaringan(subnet IP berbeda) hanya bisa terjadi dengan bantuan router
+
+================konsep Route=================
+destination = ip yang ingin dicapai(ip komputer lain)
+gateway = pintu keluar (router lain)
+routing= harus dilakukan 2 arah
+IP hanya dapat berkomunikasi dengan 1 subnet
+
+=====Prioritas Routing========
+Tujuan Spesifik
+Distance lebih kecil
+jika distance sama akan dirandom
+
+=======Route====
+1. disable wlan2 yang konek dengan pak diksi
+2. enable wlan1
+3. IP > Address> new(+)
+	Address= 10.10.10.2/24
+	Interface = wlan1
+4. IP > Route > new(+)
+	Dst. Address = 192.168.27(xyteman).0/24		//Address PC teman, belakangnya harus 0/24
+	Gateway = 10.10.10.1			//IP Router teman
+5. lakukan ping ke IP Routemu dan ping ke route temanmu(10.10.10.1 & 10.10.10.2)
+====Route 3 device terhubung====
+1. lakukan hal yang sama pada pc ketiga 
+2. set wlan1 sama tapi IP beda diakhir, misal AP 10.10.10.1 maka Client ketiga 10.10.10.3
+
+======vpn Tunnel=====
+membuat koneksi jaringan lokal melalui internet
+keuntungan = lebih aman
+
+#Point to point Protocol Tunel
+-menawarkansistem auth
+#Buat vpn
+IP > Pool > new(+)
+	address=12.12.12.0/24
+ppp > profile> new(+) > 
+	name =pptp-mtcna
+	lokal = 11.11.11.1
+tab secrets > new(+) 
+interface > pptp server > enable

@@ -1,0 +1,6 @@
+INTERFACE > AKTIVE wlan1 > doubleklik wlan1 > klik scan> plih yang ada koneksi
+> connet > wireles > tab secure profile> double klik none > dynamic key > centang wpa & wpa2 > set pass> ok
+IP > dhcp client baru> pilih wlan1> ok
+double klik ethernet 1,2,3 beri nama > IP > Adresses > 192.168.1.1/24 ether1,2,3
+ip > dhcp serrver >dhcp setup> setting range yg bisa konek>set time>
+ip > firewal > tab NAT> new NAT > Output interface wlan1 > action maquirate

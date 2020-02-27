@@ -1,0 +1,180 @@
+mtcwe(advance wireles)
+mtcre(advance routing) > (mtcine(advance internetworking)
+mtctce(advance traffic control) : melimit donwload speed
+mtcume(advance user management) : web login wifinya
+
+#runingdown
+mikrotik basic, firewall
+
+Catatan:
+*fungsi router = menghubungkan alamat ip beda subnet
+* default gateway disetting ke router.
+
+
+##Mikrotik basic
+RouterOS = Sistem Operasi
+RouterBoard = mini computer yg sudah diinstall routerOS
+
+##Mikrotik Setup
+1. sambungkan RB pada listrik, tekan power on
+2. pasangkan kabel lan ke ether2/3/4 dan ke pc
+3. open winbox , tab neighbors
+4. klik mac address lalu connect
+5. system > reset config(no default & do not backup) 
+6. reconnect
+
+===manajemen versi ====
+1. sistem> Routerboard (melihat versi)
+2. sistem > resources
+3. sistem > packages (melihat apa yang terinstall)
+4. enable packages yg belum aktif
+5. lakukan reboot melalui sistem [system > reboot]
+6. reconnect
+
+===upgrade===
+1. files > drag&drop file npk versi terbaru
+2. sistem > reboot
+===downgrade===
+1. files > drag&drop file npk versi dibawahnya
+2. sistem > packages> downgrade (auto reboot sendiri)
+
+===uninstall===
+1. sistem > packages
+2. klik package yg ingin diuninstall > klik uninstall
+3. jika ingin menambahkan packages baru lihat di all-packages.zip
+4. caranya sama seperti upgrade tinggal drag&drop
+
+===reset config tanpa hapus lisensi===
+1. sistem > routerboard> setting > boot device: try ethernet once then nand > apply
+2. system > reboot
+
+----------------------------------------------------------------------------------------------------------------------MTCNA PAK DIKSI =7066
+
+##Mikrotik Setup(2)
+{xy = 28}
+koneksikan ke MTCNA 
+buka network and sharing center di pc
+1. setting adapter wifi(ethernet) > IPv4 > 
+	ip=192.168.xy.1
+	subnet= 255.255.255.0
+	default gateway= 192.168.xy.254
+	preferDNS = 192.168.xy.254
+2. ip> Addresses> new(+)
+	address =192.168.xy.254/24
+	interface = ether2 (tergantung kabel LAN terhubung ke ether berapa)
+3. Klik apply > ok
+4. lakukan ping ke IP address pc (192.168.xy.1) melalui terminal di winbox
+5. ping ke IP Router (192.168.xy.254) melalui CMD di windows
+
+====Membuat router connect internet(bukan pc)======
+1. wireles > enable wlan2 jika ada wlan2 jika tidak wlan1
+2. double klik wlan2 > tab wireles
+3. kembali ke wireles tables(Wifi Interface)
+4. tab security profile > new(+)
+	Nama = profil1
+	Mode = dynamic key
+	Authorize = wpa & wpa2 psk
+	set pass : ilkomunej2019
+5. kembali ke Wifi Interfaces > klik wlan2
+6. scan > klik MTCNA > klik connect
+7. advance mode > securityprofile > profil1 >apply >ok
+8. cek wlan2 harus ada simbol R
+
+===set dhcp client====
+1. IP > DHCP Client > new(+)
+2. Interface = wlan2 > klik apply >ok
+3. cek, IP > Adresses > jika ada simbol D berarti router sudah konek internet
+
+====Ganti IP supaya dikenali internet pake firewall====
+1. IP > FIREWALL > tab NAT > new(+)
+2. tab General > Out.Interface wlan2
+3. tab Action > masquerade > apply>ok
+4. IP > DNS > Allow remote request
+(Sudah Bisa Internetan) :v
+
+===Disconnect winbox===
+1. Session>disconnect 
+2. Login lagi pakai IP
+
+===Login via HTTP====
+1. BUKA BROWSER > kunjungi IP Router (192.168.xy.254)
+===Login via Putty===
+1. Masukkan IP Router (192.168.xy.254
+===Login via Console===
+1. Pakai perintah terminal
+
+===Fitur Identity===
+1. sistem > identity
+
+===menambah user===
+1. sistem > users> new(+)
+	group > full
+	set pass
+===buat group===
+1. sistem > users
+2. tab group > new(+)>centang access apa saja >ok
+
+===mencegah setting selain dengan winbox===
+1. IP > Services > disable www untuk web
+
+==mencegah salah config===
+1. klik safe mode (dipojok)
+2. jika pakai console tekan ctrl+x
+
+===mensingkron waktu dengan NTPServer===
+1. sistem > SNTP Client >Enable
+2. Isi primary & Secondary
+
+===Backup & RestoreConfig===
+1. files > Backup >Don't Encrypt
+====export config via terminal===
+1. open terminal
+2. Ketik perintah: export file namafile
+=====restore=====
+1. files > klik file config > restore
+
+=============Brige===============
+*fungsi bridge: Menyatukan ether agar 1 subnet/menyatukan subnet dari tempat berbeda
+1. colokkan router 1 ke router teman
+2. Bridge > new(+) >ok
+3. tab Ports > new(+)
+4. tambahkan ether2 
+5. tab ports > new(+)
+6. tambahkan ether3
+7. IP > Addresses > new(+) 
+	Address samakan dengan teman (tapi IP Baru/terserah contoh: 192.168.xyteman.xbedadariteman)
+	interface > ether3
+8. ping IP teman di terminal (ping 192.168.xyteman.x)
+
+==========Memunculkan SSID dari router=====================
+1. Sistem > enable wlan1 > klik wlan1
+	mode = ap bridge
+	wireless protocol = 802.11
+	frequecy mode = superchannel			//lebih baik txmanual
+	country =indonesia
+2. IP > Address > new (+) 
+	ADDRESS = 10.1.2.xy/24
+	Interface = wlan1
+3. ping ip teman yg konek ke ssid kita (ping 10.1.2.xyteman)
+
+===connect ke ssid teman===
+1. wlan1 > mode : station
+2. samakan frequency
+3. scan > connet ssid teman
+
+===virtual access point=====
+buat ssid lain dalam interface sama
+1. interface > virtual
+	mode: ap bridge
+
+===memastikan konek pada ssid yg tepat jika banyak ssid yg namanya sama===
+1. buka wlan2 yg sudah konek ke ssid pak diksi, scan dan cari mac
+2. buka wireless > tab connect list > new(+)
+2. copykan mac
+
+===connect tanpa kabel ke ssid teman===
+1. setting wlan 1 > mode =station bridge
+	samakan frequency
+	scan > connect ssid teman
+2. bridge > tab port > add ether2 & add wlan1
+3. ping ip teman (10.1.2.xyteman)
